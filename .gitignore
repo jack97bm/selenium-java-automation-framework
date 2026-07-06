@@ -1,0 +1,46 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+.kotlin
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+
+### Scratch / learning exercises (not part of framework) ###
+src/main/java/org/
+src/main/java/Config.java
+src/main/java/DriverManager.java
+src/test/java/FirstTest.java
+src/test/java/LoginTest.java
+src/test/java/RunnerTest.java
+src/test/java/DynamicLoadingTest.java
+src/test/java/WindowTabHandling.java
