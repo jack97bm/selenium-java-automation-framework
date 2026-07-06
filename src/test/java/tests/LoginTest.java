@@ -25,7 +25,7 @@ public class LoginTest extends BaseTest{
     @Test (dataProvider = "loginData", description = "Login check", groups = "smoke", priority = 1)
      public void validLogin(String username, String password, boolean shouldPass) {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.navigateTo("https://the-internet.herokuapp.com/login");
+        loginPage.navigateTo(baseUrl+"/login");
         loginPage.loginAs(username, password);
         if(shouldPass) {
             new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.urlContains("secure"));
@@ -40,7 +40,7 @@ public class LoginTest extends BaseTest{
     @Test
     public void loginAndVerifySecurePage() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.navigateTo("https://the-internet.herokuapp.com/login");
+        loginPage.navigateTo(baseUrl+"/login");
         loginPage.loginAs("tomsmith", "SuperSecretPassword!");
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.urlContains("secure"));
         Assert.assertTrue(driver.getCurrentUrl().contains("secure"));
@@ -60,7 +60,7 @@ public class LoginTest extends BaseTest{
     @Test(groups = {"smoke","regression"}, priority = 3)
     public void verifyTitle() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.navigateTo("https://the-internet.herokuapp.com/login");
+        loginPage.navigateTo(baseUrl+"/login");
         Assert.assertEquals(driver.getTitle(),"The Internet");
     }
 

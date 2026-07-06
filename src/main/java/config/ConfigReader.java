@@ -1,33 +1,24 @@
 package config;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 public class ConfigReader {
-    private Map<String, String> config = new HashMap<>();
+    private Properties properties = new Properties();
 
-    public ConfigReader(String browser, String baseUrl, int timeout, String username, String password) {
-        config.put("browser", browser);
-        config.put("baseUrl", baseUrl);
-        config.put("timeout", String.valueOf(timeout));
-        config.put("username", username);
-        config.put("password", password);
+    public ConfigReader() {
+        try {
+            InputStream input = getClass().getClassLoader().getResourceAsStream("config.properties");
+            properties.load(input);
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to load config.properties",e);
+        }
     }
 
     public String get(String key) {
-        if (!config.containsKey(key)) {
-            throw new IllegalArgumentException("Key not found: " + key);
-        }
-        return config.get(key);
+        String value = properties.getProperty(key);
+        if (value == null) throw new RuntimeException("Key not found: " + key);
+        return value;
     }
-
-    public void getAllKeys() {
-        System.out.print("Keys : ");
-        Set<String> keys = config.keySet();
-        for(String key : keys) {
-            System.out.print(key+" ");
-        }
-    }
-
 }
