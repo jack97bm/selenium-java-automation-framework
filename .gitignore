@@ -35,6 +35,10 @@ build/
 ### Mac OS ###
 .DS_Store
 
+### Generated test artifacts ###
+screenshots/
+test-output/
+
 ### Scratch / learning exercises (not part of framework) ###
 src/main/java/org/
 src/main/java/Config.java
