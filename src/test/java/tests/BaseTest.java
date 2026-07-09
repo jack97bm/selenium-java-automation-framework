@@ -12,6 +12,10 @@ public class BaseTest {
     protected WebDriver driver;
     protected String baseUrl;
 
+    public WebDriver getDriver() {
+        return driver;
+    }
+
     @BeforeMethod
     public void setup() {
         driver = new ChromeDriver();

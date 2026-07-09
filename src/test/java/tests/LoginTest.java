@@ -37,7 +37,7 @@ public class LoginTest extends BaseTest{
         }
     }
 
-    @Test
+    @Test(groups = {"smoke","regression"})
     public void loginAndVerifySecurePage() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.navigateTo(baseUrl+"/login");
@@ -65,7 +65,7 @@ public class LoginTest extends BaseTest{
     }
 
 
-    @Test(retryAnalyzer = RetryAnalyzer.class)
+    @Test(groups = {"smoke","regression"}, retryAnalyzer = RetryAnalyzer.class)
     public void flakyTest() {
         int random = (int)(Math.random() * 2);
         Assert.assertEquals(random,1, "Simulated flaky failure");
